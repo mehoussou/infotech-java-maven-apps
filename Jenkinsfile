@@ -1,7 +1,7 @@
 
 pipeline{
   
-  // agent any
+  agent any
   // environment {
   //   NEW-VERSION = '1.3.0'
   //   BRANCH_NAME = "lab"
