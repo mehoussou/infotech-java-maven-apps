@@ -6,7 +6,7 @@
      
 //     ]
 // )
-
+def gv
 pipeline {
     agent any
     tools {
