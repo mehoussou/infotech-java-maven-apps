@@ -1,16 +1,16 @@
 #!/usr/bin/env groovy
 
-library identifier: 'jenkins-shared-library-latest@master', retriever: modernSCM(
+library identifier: 'jenkins-shared-library@main', retriever: modernSCM(
     [$class: 'GitSCMSource',
-     remote: 'https://github.com/mehousso/jenkins-shared-library-latest',
-     credentialsId: 'gitlab-credentials'
+     remote: 'https://github.com/mehoussou/Jenkins-share-library',
+     
     ]
 )
 
 pipeline {
     agent any
     tools {
-        maven 'maven-3.6'
+        maven 'maven-3.8'
     }
 
     environment {
