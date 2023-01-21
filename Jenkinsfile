@@ -10,7 +10,7 @@ library identifier: 'jenkins-shared-library@main', retriever: modernSCM(
 pipeline {
     agent any
     tools {
-        maven 'maven-3.8'
+        maven 'maven-3.6'
     }
 
     environment {
