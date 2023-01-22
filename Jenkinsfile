@@ -118,11 +118,16 @@ pipeline {
     stages {
         stage("build app") {
             steps {
-                script {
+                // script {
                     echo "building application jar..."
                     // buildJar()   
                     // echo "building the application for branch $BRANCH_NAME"
-                    sh 'mvn package'     
+                    sh 'mvn clean package'     
+                }
+            post{
+                success{
+                    echo "archiving..."
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
