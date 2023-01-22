@@ -87,7 +87,9 @@
 //   }
 // }
 
+#!/usr/bin/env groovy
 
+@Library('jenkins-share-library-latest')
 def gv
 pipeline{
   
