@@ -1,17 +1,16 @@
-#!/usr/bin/env groovy
+// #!/usr/bin/env groovy
 
 
-libray identifier: 'jenkins-library@main', retriever: modernSCM(
-    [$class: 'GitSCMSource',
-    remote:'https://github.com/mehoussou/Jenkins-share-library',
-    credentialsId:''
-    ]
-)
-// @library ('jenkins-library')
-
+// libray identifier: 'jenkins-library@main', retriever: modernSCM(
+//     [$class: 'GitSCMSource',
+//     remote:'https://github.com/mehoussou/Jenkins-share-library',
+//     credentialsId:''
+//     ]
+// )
+@library('jenkins-library') _
 
   
-// def gv
+def gv
 pipeline {
     agent any
     tools {
