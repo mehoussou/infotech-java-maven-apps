@@ -131,7 +131,7 @@ pipeline {
             //     success{
             //         echo "archiving..."
             //         archiveArtifacts artifacts: '**/target/*.war'
-        stage("build image") {
+        stage("build image"){
             steps {
                 script {
                     echo "building docker image..."
@@ -167,6 +167,7 @@ pipeline {
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key_id')
             //   assign a value to the env variable  
                 TF_VAR_en_prefix = 'test'
+            }
 
             steps{
                 script{
@@ -179,9 +180,7 @@ pipeline {
                         ).trim()
                     }
                 }
-            }
-        }
-    }
+            }   
 
         stage("deploy") {
             environment{
@@ -206,5 +205,5 @@ pipeline {
             }
         }
     }
-    
 }
+    
