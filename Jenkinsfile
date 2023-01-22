@@ -12,7 +12,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = 'mehousso/demo-app:java-Maven-6.0'
+        IMAGE_NAME = 'mehousso/demo-app:jma-v3'
     }
     stages {
         stage("build app") {
