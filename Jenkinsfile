@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 
-@library ('jenkins-library')
+// @library ('jenkins-library')
+
+
   
 def gv
 pipeline {
