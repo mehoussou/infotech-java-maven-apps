@@ -163,7 +163,6 @@ pipeline {
                     }
                 }
             } 
-        } 
 
         stage("deploy") {
             environment{
