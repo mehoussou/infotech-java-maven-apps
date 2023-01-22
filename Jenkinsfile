@@ -180,7 +180,8 @@ pipeline {
                         ).trim()
                     }
                 }
-            }   
+            }  
+        } 
 
         stage("deploy") {
             environment{
@@ -206,4 +207,3 @@ pipeline {
         }
     }
 }
-    
