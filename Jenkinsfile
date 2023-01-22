@@ -149,7 +149,6 @@ pipeline {
             //   assign a value to the env variable  
                 TF_VAR_en_prefix = 'test'
             }
-        }
 
             steps{
                 script{
@@ -163,6 +162,7 @@ pipeline {
                     }
                 }
             } 
+        }
 
         stage("deploy") {
             environment{
