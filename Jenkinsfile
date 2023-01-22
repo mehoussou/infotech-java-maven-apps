@@ -92,7 +92,7 @@
 
 // my work below without libray
 
-#!/usr/bin/env groovy
+// #!/usr/bin/env groovy
 
 
 // libray identifier: 'jenkins-library@share-library-jenkins', retriever: modernSCM(
