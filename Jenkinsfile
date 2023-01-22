@@ -132,18 +132,21 @@ pipeline {
                     echo "building docker image..."
 
                     // import com.example.Docker
-                    def call(String imageName) {
-                    return new Docker(this).buildDockerImage(imageName)
-                    }
+                    // def call(String imageName) {
+                    // return new Docker(this).buildDockerImage(imageName)
+                    // }
+                    docker build -t $IMAGE_NAME .
+                    echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+                    docker push $IMAGE_NAME
 
-                    // import com.example.Docker
-                    def call(){
-                    return new Docker(this).dockerLogin()
-                    }
-                    // import com.example.Docker
-                    def call(String imageName){
-                    return new Docker(this).dockerPush(imageName)
-                    }
+                    // // import com.example.Docker
+                    // def call(){
+                    // return new Docker(this).dockerLogin()
+                    // }
+                    // // import com.example.Docker
+                    // def call(String imageName){
+                    // return new Docker(this).dockerPush(imageName)
+                    // }
 
                     // buildImage(env.IMAGE_NAME)
                     // dockerLogin()
