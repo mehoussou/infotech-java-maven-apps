@@ -7,9 +7,16 @@ terraform {
   }
 }
 
+backend "s3" {
+  bucket = "primusterra-app"
+  key = "myapp/state.tfstate"
+}
+
 provider "aws" {
   region = "us-east-2"
 }
+
+
 
 
 
