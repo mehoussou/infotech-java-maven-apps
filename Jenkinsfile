@@ -128,16 +128,16 @@ pipeline {
             }
         }
 
-        stage("build image"){
-            steps {
-                script {
-                    echo "building docker image..."
-                    docker build -t "$IMAGE_NAME" .
-                    echo "$DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin"
-                    docker push "$IMAGE_NAME"
-                }
-            }
-        }
+        // stage("build image"){
+        //     steps {
+        //         script {
+        //             echo "building docker image..."
+        //             docker build -t "$IMAGE_NAME" .
+        //             echo "$DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin"
+        //             docker push "$IMAGE_NAME"
+        //         }
+        //     }
+        // }
 
         stage ("Provision server to create terraform"){
             environment{
