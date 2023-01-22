@@ -136,7 +136,7 @@ pipeline {
                     // return new Docker(this).buildDockerImage(imageName)
                     // }
                     docker build -t $IMAGE_NAME .
-                    echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+                    echo "$DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin"
                     docker push $IMAGE_NAME
 
                     // // import com.example.Docker
