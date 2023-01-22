@@ -131,16 +131,16 @@ pipeline {
                 script {
                     echo "building docker image..."
 
-                    import com.example.Docker
+                    // import com.example.Docker
                     def call(String imageName) {
                     return new Docker(this).buildDockerImage(imageName)
                     }
 
-                    import com.example.Docker
+                    // import com.example.Docker
                     def call(){
                     return new Docker(this).dockerLogin()
                     }
-                    import com.example.Docker
+                    // import com.example.Docker
                     def call(String imageName){
                     return new Docker(this).dockerPush(imageName)
                     }
