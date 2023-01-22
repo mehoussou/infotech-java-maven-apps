@@ -93,16 +93,16 @@
 
 // this
 
-// library identifier: 'jenkins-share-library-latest@jenkins-share-library', retriever: modernSCM(
+// library identifier: 'jenkins-library@jenkins-share-library', retriever: modernSCM(
 //   [$class: 'GitSCMSource',
-//   remote: 'https://github.com/mehoussou/infotech-java-maven-apps/tree/jenkins-share-library-latest',
+//   remote: 'https://github.com/mehoussou/Jenkins-share-library.git',
 //   credentialsId:''
 //   ]
 // )
 
 // or below
 
-@Library('jenkins-share-library-latest')
+@Library('jenkins-library')
 def gv
 pipeline{
   
