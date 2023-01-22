@@ -115,48 +115,25 @@ pipeline {
     environment {
         IMAGE_NAME = 'mehousso/demo-app:jma-v3'
     }
+
     stages {
         stage("build app") {
             steps {
-                // script {
+                script {
                 echo "building application jar..."
-                    // buildJar()   
-                    // echo "building the application for branch $BRANCH_NAME"
-                sh 'mvn package'     
+                sh 'mvn package'  
+                }   
             }
         }
     }
 
-            // post{
-            //     success{
-            //         echo "archiving..."
-            //         archiveArtifacts artifacts: '**/target/*.war'
         stage("build image"){
             steps {
                 script {
                     echo "building docker image..."
-
-                    // import com.example.Docker
-                    // def call(String imageName) {
-                    // return new Docker(this).buildDockerImage(imageName)
-                    // }
                     docker build -t "$IMAGE_NAME" .
-                    // echo "$DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin"
                     echo "$DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin"
                     docker push "$IMAGE_NAME"
-
-                    // // import com.example.Docker
-                    // def call(){
-                    // return new Docker(this).dockerLogin()
-                    // }
-                    // // import com.example.Docker
-                    // def call(String imageName){
-                    // return new Docker(this).dockerPush(imageName)
-                    // }
-
-                    // buildImage(env.IMAGE_NAME)
-                    // dockerLogin()
-                    // dockerPush(env.IMAGE_NAME)
                 }
             }
         }
@@ -168,6 +145,7 @@ pipeline {
             //   assign a value to the env variable  
                 TF_VAR_en_prefix = 'test'
             }
+        }
 
             steps{
                 script{
@@ -181,7 +159,6 @@ pipeline {
                     }
                 }
             }  
-        } 
 
         stage("deploy") {
             environment{
