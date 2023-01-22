@@ -35,7 +35,7 @@ pipeline {
         stage ("Provision server to create terraform"){
             environment{
                 AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
-                AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_access_key')
+                AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key_id')
             //   assign a value to the env variable  
                 TF_VAR_en_prefix = 'test'
             }
@@ -56,12 +56,12 @@ pipeline {
 
         stage("deploy") {
             environment{
-                DOCKER_CREDS = credentials ('Dockerhub-creds')
+                DOCKER_CREDS = credentials ('docker-hub-creds')
 
             }
             steps{
                 script {
-                    echo "waiting for EC@ server to initialize"
+                    echo "waiting for EC2 server to initialize"
                     sleep(time: 120, unit: "SECONDS")
 
                     echo "deploying docker image to EC2..."
