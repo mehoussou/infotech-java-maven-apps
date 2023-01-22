@@ -1,80 +1,41 @@
-
-def gv
 pipeline{
   
   agent any
-  environment {
-    NEW_VERSION = '1.3.0'
-    // BRANCH_NAME = "lab"
+  tools{
+    maven 'Maven-3.6'
   }
-  
-  parameters {
-    choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description:'')
-    booleanParam(name: 'executeTests', defaultValue: true, description: '')
-  }
+
   stages {
-
-    stage("init"){
-      steps {
-        script{
-          gv = load "script.groovy"
-
-        }
-      }
-
-    }
-    
-    stage("build"){
+    stage ("build jar") {
       steps {
         script {
-          gv.buildApp()
-        } 
-      }
-    }
-    stage("test"){ 
-      when {
-        expression{
-          params.executeTests
-        }
-      }
-      steps {
-        script{
-          gv.testApp()
+          echo "building the application..."
+          sh 'mvn package'
+
         }
       }
     }
-    
-    stage("deploy"){
-      input {
-        message "Select the environment to deploy to"
-        ok "Done"
-        parameters{
-          choice(name: 'ONE', choices: ['dev', 'staging', 'prod'], description: '')
-          choice(name: 'TWO', choices: ['dev', 'staging', 'prod'], description: '')
-        }
-      }
+
+    stage ("build image"){
       steps {
         script {
-          gv.deployApp()
-          echo "Deploying to ${ONE}"
-          echo "Deploying to ${TWO}"
+          echo "building the docker image..."
+          withCredentials([usernamePassword(credentialsID:'docker-hub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]){}
+            sh 'docker build -t mehousso/demo-app:v2 .'
+            sh "echo $PASS | docker login -u $USER --password-stdin"
+            sh 'docker push mehousso/demo-app:v2'
+          }
         }
       }
     }
-  }
+    stage ("deploy"){
+      steps{
+        script{
+          echo "deploying the application..."
+        }
+      }
+    }
 }
 
-//   post {
-//     always{
-//       echo "we are testing the pipeline"
-//     }
-//     sucess {
-//       echo "Our pipeline is successful run"
-//     }
-//     failure {
-//       echo "Our pipeline is failed"
-//     }
-//   }
-// }
 
 
