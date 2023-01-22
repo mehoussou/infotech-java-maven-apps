@@ -89,7 +89,19 @@
 
 #!/usr/bin/env groovy
 
-@Library('jenkins-share-library-latest')
+// #####define share library###
+
+// this
+
+// library identifier: 'jenkins-share-library-latest@jenkins-share-library', retriever: modernSCM(
+//   [$class: 'GitSCMSource',]
+//   remote: 'https://github.com/mehoussou/infotech-java-maven-apps/tree/jenkins-share-library-latest',
+//   credentialsId:''
+// )
+
+// or below
+
+// @Library('jenkins-share-library-latest')
 def gv
 pipeline{
   
