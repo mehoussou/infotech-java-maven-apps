@@ -122,12 +122,13 @@ pipeline {
                     echo "building application jar..."
                     // buildJar()   
                     // echo "building the application for branch $BRANCH_NAME"
-                    sh 'mvn clean package'     
+                    sh 'mvn package'     
                 }
-            post{
-                success{
-                    echo "archiving..."
-                    archiveArtifacts artifacts: '**/target/*.war'
+
+            // post{
+            //     success{
+            //         echo "archiving..."
+            //         archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
