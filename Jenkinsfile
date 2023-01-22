@@ -119,19 +119,18 @@ pipeline {
         stage("build app") {
             steps {
                 // script {
-                    echo "building application jar..."
+                echo "building application jar..."
                     // buildJar()   
                     // echo "building the application for branch $BRANCH_NAME"
-                    sh 'mvn package'     
-                }
+                sh 'mvn package'     
+            }
+        }
+    }
 
             // post{
             //     success{
             //         echo "archiving..."
             //         archiveArtifacts artifacts: '**/target/*.war'
-                }
-            }
-        }
         stage("build image") {
             steps {
                 script {
@@ -169,6 +168,8 @@ pipeline {
             //   assign a value to the env variable  
                 TF_VAR_en_prefix = 'test'
             }
+        }
+
             steps{
                 script{
                     dir('terraform'){
@@ -182,13 +183,11 @@ pipeline {
                 }
             }
 
-        }
-
         stage("deploy") {
             environment{
                 DOCKER_CREDS = credentials ('docker-hub-creds')
-
             }
+
             steps{
                 script {
                     echo "waiting for EC2 server to initialize"
@@ -207,5 +206,5 @@ pipeline {
                 }
             }
         }
-    }
+    
 }
