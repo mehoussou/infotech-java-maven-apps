@@ -41,6 +41,53 @@
 
 // ##########pipeline with groovy script###########
 
+// def gv
+// pipeline{
+  
+//   agent any
+//   tools{
+//     maven 'Maven-3.6'
+//   }
+
+//   stages {
+
+//     stage ("init") {
+//       steps {
+//         script {
+//           gv = load "script.groovy"
+//         }
+//       }
+//     }
+//     stage ("build jar") {
+//       steps {
+//         script {
+//          gv.buildJar()
+//         }
+//       }
+//     }
+
+//     stage ("build image"){
+//       steps {
+//         script {
+//           gv.buildImage()
+          
+          
+//         }
+//       }
+//     }
+
+//     stage ("deploy"){
+//       steps{
+//         script{
+//           gv.deployApp()
+          
+//         }
+//       }
+//     }
+//   }
+// }
+
+
 def gv
 pipeline{
   
@@ -69,9 +116,9 @@ pipeline{
     stage ("build image"){
       steps {
         script {
-          gv.buildImage()
-          
-          
+          buildImage 'mehousso/demo-app:v3'
+          dockerLogin()
+          buildPush 'mehousso/demo-app:v3'
         }
       }
     }
@@ -86,7 +133,4 @@ pipeline{
     }
   }
 }
-
-
-
 
