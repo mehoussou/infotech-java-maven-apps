@@ -167,8 +167,6 @@ pipeline {
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key_id')
             //   assign a value to the env variable  
                 TF_VAR_en_prefix = 'test'
-            }
-        }
 
             steps{
                 script{
@@ -182,11 +180,12 @@ pipeline {
                     }
                 }
             }
+        }
+    }
 
         stage("deploy") {
             environment{
                 DOCKER_CREDS = credentials ('docker-hub-creds')
-            }
 
             steps{
                 script {
@@ -206,5 +205,6 @@ pipeline {
                 }
             }
         }
+    }
     
 }
