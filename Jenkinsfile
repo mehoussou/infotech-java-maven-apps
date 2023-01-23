@@ -87,7 +87,7 @@
 //   }
 // }
 
-#!/usr/bin/env groovy
+// #!/usr/bin/env groovy
 
 // #####define share library###
 
