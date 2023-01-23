@@ -7,6 +7,9 @@
 //     credentialsId:''
 //     ]
 // )
+
+#!/usr/bin/env groovy
+
 @library('jenkins-library') _
 
   
