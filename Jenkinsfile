@@ -10,7 +10,7 @@
 
 // #!/usr/bin/env groovy
 
-@library('jenkins-library') _
+// @library('jenkins-library') _
 
   
 def gv
