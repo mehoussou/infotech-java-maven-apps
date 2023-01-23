@@ -20,10 +20,19 @@ pipeline {
         maven 'Maven-3.6'
     }
 
+
     environment {
         IMAGE_NAME = 'mehousso/demo-app:jma-v3'
     }
     stages {
+        stage ("init"){
+            steps{
+                script{
+                    gv = load "script.groovy"
+                }
+            }
+        }
+        
         stage("build app") {
             steps {
                 script {
