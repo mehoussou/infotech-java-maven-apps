@@ -126,19 +126,19 @@ pipeline{
     stage ("build jar") {
       steps {
         script {
-         gv.buildJar()
+            buildJar()
         }
       }
     }
 
     stage ("build image"){
-      steps {
-        script {
-          buildImage 'mehousso/demo-app:v3'
-          dockerLogin()
-          buildPush 'mehousso/demo-app:v3'
+        steps {
+            script {
+                buildImage 'mehousso/demo-app:jma-4.0'
+                dockerLogin()
+                buildPush 'mehousso/demo-app:jma-4.0'
+            }
         }
-      }
     }
 
     stage ("deploy"){
