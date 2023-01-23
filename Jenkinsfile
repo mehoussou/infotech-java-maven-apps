@@ -8,7 +8,7 @@
 //     ]
 // )
 
-#!/usr/bin/env groovy
+// #!/usr/bin/env groovy
 
 @library('jenkins-library') _
 
@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage("build app") {
             steps {
                 script {
